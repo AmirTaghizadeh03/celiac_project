@@ -1,0 +1,48 @@
+Term,Adjusted P-value,Overlap,P-value,Combined Score
+Epstein-Barr virus infection,0.001620657,3/202,3.448207e-05,766.5255
+Antigen processing and presentation,0.007316696,2/78,0.0003113488,846.4302
+Herpes simplex virus 1 infection,0.007808738,3/498,0.0004984301,224.642
+Phagosome,0.01380883,2/152,0.00117522,356.9782
+NOD-like receptor signaling pathway,0.01476143,2/181,0.001660143,283.4111
+Kaposi sarcoma-associated herpesvirus infection,0.01476143,2/193,0.001884438,260.189
+Human immunodeficiency virus 1 infection,0.01497745,2/212,0.002267577,229.4468
+Human cytomegalovirus infection,0.01497745,2/225,0.002549353,211.7754
+Human papillomavirus infection,0.02834586,2/331,0.005427931,124.7068
+Allograft rejection,0.05010696,1/38,0.01322628,388.8318
+Primary immunodeficiency,0.05010696,1/38,0.01322628,388.8318
+Graft-versus-host disease,0.05010696,1/42,0.01460976,342.7579
+Type I diabetes mellitus,0.05010696,1/43,0.01495537,332.7292
+ABC transporters,0.05010696,1/45,0.01564628,314.1606
+Proteasome,0.05010696,1/46,0.01599158,305.5511
+Autoimmune thyroid disease,0.05406695,1/53,0.01840577,255.3401
+Viral myocarditis,0.05754703,1/60,0.02081488,218.0401
+Inflammatory bowel disease,0.05883505,1/65,0.02253257,196.8401
+Prolactin signaling pathway,0.05963291,1/70,0.02424768,179.0
+Pancreatic cancer,0.05963291,1/76,0.0263024,161.0302
+Leishmaniasis,0.05963291,1/77,0.02664449,158.339
+PD-L1 expression and PD-1 checkpoint pathway in cancer,0.06416282,1/89,0.03074158,131.2727
+Th1 and Th2 cell differentiation,0.06416282,1/92,0.03176354,125.7338
+AGE-RAGE signaling pathway in diabetic complications,0.06416282,1/100,0.03448425,112.7746
+Toll-like receptor signaling pathway,0.06416282,1/104,0.03584215,107.1302
+C-type lectin receptor signaling pathway,0.06416282,1/104,0.03584215,107.1302
+Th17 cell differentiation,0.06416282,1/107,0.03685949,103.2073
+Toxoplasmosis,0.06471401,1/112,0.03855303,97.19255
+"Growth hormone synthesis, secretion and action",0.06516544,1/119,0.04091969,89.72226
+Thyroid hormone signaling pathway,0.06516544,1/121,0.04159496,87.76624
+Osteoclast differentiation,0.06604265,1/127,0.04361833,82.31344
+Natural killer cell mediated cytotoxicity,0.06604265,1/131,0.04496521,78.99022
+Measles,0.06670203,1/139,0.04765408,72.98839
+Cell adhesion molecules,0.06670203,1/148,0.05067131,67.10728
+Cellular senescence,0.06670203,1/156,0.05334641,62.5206
+Hepatitis C,0.06670203,1/157,0.05368034,61.98444
+Necroptosis,0.06670203,1/159,0.05434791,60.93507
+JAK-STAT signaling pathway,0.06670203,1/162,0.05534849,59.41605
+Hepatitis B,0.06670203,1/162,0.05534849,59.41605
+Influenza A,0.06894575,1/172,0.05867723,54.78491
+Tuberculosis,0.07030854,1/180,0.06133298,51.49864
+Chemokine signaling pathway,0.07307891,1/192,0.06530456,47.14973
+Viral carcinogenesis,0.07534484,1/203,0.06893251,43.67455
+Human T-cell leukemia virus 1 infection,0.07924626,1/219,0.07418798,39.32554
+Coronavirus disease,0.08192551,1/232,0.07843931,36.2935
+Endocytosis,0.08679382,1/252,0.08494714,32.32295
+Pathways in cancer,0.1717083,1/531,0.1717083,10.78396

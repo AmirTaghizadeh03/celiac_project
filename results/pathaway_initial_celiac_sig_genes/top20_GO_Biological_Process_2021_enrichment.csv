@@ -1,0 +1,51 @@
+Term,Adjusted P-value,Overlap,P-value,Combined Score
+cellular response to type I interferon (GO:0071357),8.57045e-05,3/65,1.136043e-06,3300.178
+type I interferon signaling pathway (GO:0060337),8.57045e-05,3/65,1.136043e-06,3300.178
+interferon-gamma-mediated signaling pathway (GO:0060333),8.57045e-05,3/68,1.302847e-06,3115.887
+"antigen processing and presentation of exogenous peptide antigen via MHC class I, TAP-dependent (GO:0002479)",8.57045e-05,3/73,1.615675e-06,2846.66
+antigen processing and presentation of exogenous peptide antigen via MHC class I (GO:0042590),8.57045e-05,3/78,1.974758e-06,2616.242
+cellular response to interferon-gamma (GO:0071346),0.0002686173,3/121,7.427205e-06,1491.934
+antigen processing and presentation of endogenous peptide antigen (GO:0002483),0.0002956089,2/14,9.535772e-06,7699.652
+cytokine-mediated signaling pathway (GO:0019221),0.0007369146,4/621,2.990103e-05,436.2005
+cellular response to tumor necrosis factor (GO:0071356),0.0007369146,3/194,3.056328e-05,808.3346
+antigen processing and presentation of peptide antigen via MHC class I (GO:0002474),0.00119685,2/33,5.515439e-05,2525.611
+response to interferon-gamma (GO:0034341),0.006461021,2/80,0.0003275172,819.4737
+tumor necrosis factor-mediated signaling pathway (GO:0033209),0.01242634,2/116,0.000687171,507.9906
+cellular response to interleukin-1 (GO:0071347),0.01734149,2/155,0.001221612,347.9175
+positive regulation of natural killer cell proliferation (GO:0032819),0.01734149,1/5,0.001748917,5287.722
+metanephric mesenchymal cell differentiation (GO:0072162),0.01734149,1/5,0.001748917,5287.722
+renal tubule development (GO:0061326),0.01734149,1/5,0.001748917,5287.722
+regulation of natural killer cell mediated immunity (GO:0002715),0.01734149,1/5,0.001748917,5287.722
+foam cell differentiation (GO:0090077),0.01734149,1/6,0.002098387,4108.591
+macrophage derived foam cell differentiation (GO:0010742),0.01734149,1/6,0.002098387,4108.591
+mesenchymal cell differentiation involved in kidney development (GO:0072161),0.01734149,1/6,0.002098387,4108.591
+vesicle fusion with endoplasmic reticulum-Golgi intermediate compartment (ERGIC) membrane (GO:1990668),0.01734149,1/6,0.002098387,4108.591
+protection from natural killer cell mediated cytotoxicity (GO:0042270),0.01734149,1/6,0.002098387,4108.591
+positive regulation of natural killer cell cytokine production (GO:0002729),0.01734149,1/7,0.002447753,3338.154
+regulation by virus of viral protein levels in host cell (GO:0046719),0.01734149,1/7,0.002447753,3338.154
+antigen processing and presentation of endogenous peptide antigen via MHC class I via ER pathway (GO:0002484),0.01734149,1/7,0.002447753,3338.154
+"antigen processing and presentation of endogenous peptide antigen via MHC class I via ER pathway, TAP-independent (GO:0002486)",0.01734149,1/7,0.002447753,3338.154
+regulation of natural killer cell cytokine production (GO:0002727),0.01734149,1/7,0.002447753,3338.154
+regulation of natural killer cell proliferation (GO:0032817),0.01734149,1/7,0.002447753,3338.154
+peptide transport (GO:0015833),0.01734149,1/7,0.002447753,3338.154
+cellular response to interleukin-21 (GO:0098757),0.01734149,1/8,0.002797015,2797.661
+alpha-beta T cell activation (GO:0046631),0.01734149,1/8,0.002797015,2797.661
+antigen processing and presentation of endogenous peptide antigen via MHC class I (GO:0019885),0.01734149,1/8,0.002797015,2797.661
+"antigen processing and presentation of exogenous peptide antigen via MHC class I, TAP-independent (GO:0002480)",0.01734149,1/8,0.002797015,2797.661
+"regulation of CD8-positive, alpha-beta T cell proliferation (GO:2000564)",0.01734149,1/8,0.002797015,2797.661
+interleukin-21-mediated signaling pathway (GO:0038114),0.01734149,1/8,0.002797015,2797.661
+cellular response to interleukin-9 (GO:0071355),0.01750562,1/9,0.003146172,2398.853
+"positive regulation of CD8-positive, alpha-beta T cell activation (GO:2001187)",0.01750562,1/9,0.003146172,2398.853
+"regulation of CD8-positive, alpha-beta T cell activation (GO:2001185)",0.01750562,1/9,0.003146172,2398.853
+interleukin-9-mediated signaling pathway (GO:0038113),0.01750562,1/9,0.003146172,2398.853
+cell differentiation involved in metanephros development (GO:0072202),0.01813446,1/10,0.003495224,2093.271
+positive regulation of mesenchymal cell proliferation (GO:0002053),0.01813446,1/10,0.003495224,2093.271
+regulation of mesenchymal cell proliferation (GO:0010464),0.01813446,1/11,0.003844172,1852.157
+metanephric mesenchyme development (GO:0072075),0.01813446,1/11,0.003844172,1852.157
+positive regulation of interleukin-13 production (GO:0032736),0.01813446,1/11,0.003844172,1852.157
+negative regulation of natural killer cell mediated immunity (GO:0002716),0.01813446,1/11,0.003844172,1852.157
+interleukin-35-mediated signaling pathway (GO:0070757),0.01813446,1/11,0.003844172,1852.157
+negative regulation of substrate adhesion-dependent cell spreading (GO:1900025),0.02053251,1/13,0.004541754,1497.033
+negative regulation of cell morphogenesis involved in differentiation (GO:0010771),0.02053251,1/13,0.004541754,1497.033
+protein localization to vacuole (GO:0072665),0.02122428,1/14,0.004890388,1362.862
+regulation of response to interferon-gamma (GO:0060330),0.02122428,1/14,0.004890388,1362.862
