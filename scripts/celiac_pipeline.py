@@ -257,7 +257,7 @@ with open(svm_results, 'w') as f:
     f.write('\nclassification_report: \n')
     f.write(f'\n{svm_class_report}\n')
     f.write('\nroc_auc_score: \n')
-    f.write(f'\n{lr_roc_auc_score}\n')
+    f.write(f'\n{svm_roc_auc_score}\n')
 
 # step 11: CV
 
@@ -332,15 +332,16 @@ print(f" Final mean Bootstrap accuracy across all models: {final_mean:.4f} ± {f
 
 
 boot_valid = os.path.join(results_dir, 'Bootstrap_models.txt')
-with open(cross_valid, 'w') as f:
+with open(boot_valid, 'w') as f:
     f.write('\nRF Bootstrap: \n')
-    f.write(f'\n{model_means[0]} "±" {model_stds[0]}\n')
+    f.write(f'\n{model_means[0]} ± {model_stds[0]}\n')
     f.write('\nLR Bootstrap: \n')
-    f.write(f'\n{model_means[1]} "±" {model_stds[1]}\n')
+    f.write(f'\n{model_means[1]} ± {model_stds[1]}\n')
     f.write('\nSVM Bootstrap: \n')
-    f.write(f'\n{model_means[2]} "±" {model_stds[2]}\n')
+    f.write(f'\n{model_means[2]} ± {model_stds[2]}\n')
     f.write('\nFinal mean Bootstrap accuracy across all models: \n')
     f.write(f'\n{final_mean:.4f} ± {final_std:.4f}\n')
+
 # step 13: feature importance
 
 feature_importance_rf = pd.DataFrame(

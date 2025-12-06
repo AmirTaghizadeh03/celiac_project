@@ -1,16 +1,12 @@
 
-RF Bootstrap: 
+RF Cross Validation: 
 
-0.9764583333333334 "±" 0.01604437206624178
+1.0
 
-LR Bootstrap: 
+LR Cross Validation: 
 
-0.9739583333333335 "±" 0.018012100485198513
+0.992
 
-SVM Bootstrap: 
+SVM Cross Validation: 
 
-0.974375 "±" 0.017642032746949657
-
-Final mean Bootstrap accuracy across all models: 
-
-0.9749 ± 0.0011
+0.982
