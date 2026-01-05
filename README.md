@@ -219,6 +219,8 @@ pip install scanpy pandas numpy gseapy scikit-learn xgboost seaborn matplotlib
 For any issues or improvements, feel free to open an issue or submit a pull request.
 
 
+##### **Author**
 
+Amir Mahdi Taghizadeh
 
 
