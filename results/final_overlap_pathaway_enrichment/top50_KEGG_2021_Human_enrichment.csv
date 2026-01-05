@@ -1,0 +1,51 @@
+Term,Adjusted P-value,Overlap,P-value,Combined Score
+Antigen processing and presentation,0.0001599942,4/78,2.143242e-06,702.1205
+Epstein-Barr virus infection,0.0001599942,5/202,3.636232e-06,330.9155
+Herpes simplex virus 1 infection,0.0006233169,6/498,2.124944e-05,142.027
+Human papillomavirus infection,0.0008696443,5/331,3.952929e-05,160.8177
+NOD-like receptor signaling pathway,0.001053226,4/181,5.984239e-05,217.5384
+Kaposi sarcoma-associated herpesvirus infection,0.001126122,4/193,7.678102e-05,198.3841
+Human cytomegalovirus infection,0.00174559,4/225,0.0001388538,158.7925
+C-type lectin receptor signaling pathway,0.002808637,3/104,0.0002553306,232.5671
+Phagosome,0.00757513,3/152,0.0007747292,136.1656
+Allograft rejection,0.008185942,2/38,0.0009449004,350.6837
+Influenza A,0.008185942,3/172,0.001107602,113.9456
+Graft-versus-host disease,0.008185942,2/42,0.001153885,306.4988
+Type I diabetes mellitus,0.008185942,2/43,0.001209287,296.9353
+Viral carcinogenesis,0.01074744,3/203,0.001781864,89.41712
+Autoimmune thyroid disease,0.01074744,2/53,0.00183195,223.841
+Human immunodeficiency virus 1 infection,0.01086433,3/212,0.0020165,83.85629
+Lipid and atherosclerosis,0.01086433,3/215,0.00209879,82.1244
+Viral myocarditis,0.01144523,2/60,0.00234107,189.1007
+Glycolysis / Gluconeogenesis,0.01347524,2/67,0.002909427,162.6241
+Prolactin signaling pathway,0.01395199,2/70,0.003170908,153.1356
+Toll-like receptor signaling pathway,0.02874679,2/104,0.006860029,88.247
+TNF signaling pathway,0.03166085,2/112,0.007915213,79.44707
+Osteoclast differentiation,0.03855697,2/127,0.01007739,66.37396
+Natural killer cell mediated cytotoxicity,0.03920979,2/131,0.01069358,63.4728
+Measles,0.04215169,2/139,0.01197491,58.25243
+Cell adhesion molecules,0.04566906,2/148,0.01349313,53.16285
+Cellular senescence,0.04690268,2/156,0.01490948,49.21283
+Hepatitis C,0.04690268,2/157,0.01509088,48.75227
+Necroptosis,0.04690268,2/159,0.01545657,47.8516
+JAK-STAT signaling pathway,0.04696927,2/162,0.01601225,46.5496
+Chemokine signaling pathway,0.06253211,2/192,0.02202836,36.12057
+Histidine metabolism,0.07172923,1/22,0.02608336,150.6523
+Human T-cell leukemia virus 1 infection,0.07356276,2/219,0.02812192,29.56157
+Vitamin digestion and absorption,0.07356276,1/24,0.02842197,134.2996
+Coronavirus disease,0.07862666,2/232,0.03127197,27.04369
+Pentose phosphate pathway,0.08652184,1/30,0.03540559,99.91101
+Endocytosis,0.08652184,2/252,0.0363785,23.77003
+Fructose and mannose metabolism,0.09003634,1/33,0.03887933,87.99457
+Tyrosine metabolism,0.09553885,1/36,0.04234108,78.32719
+Primary immunodeficiency,0.09821301,1/38,0.04464228,72.84586
+Tryptophan metabolism,0.1028518,1/42,0.04922878,63.65833
+Fat digestion and absorption,0.1028518,1/43,0.0503721,61.66576
+Fatty acid degradation,0.1028518,1/43,0.0503721,61.66576
+Vasopressin-regulated water reabsorption,0.1028518,1/44,0.05151411,59.77682
+ABC transporters,0.1028518,1/45,0.0526548,57.98396
+Proteasome,0.1028518,1/46,0.05379417,56.28033
+Pyruvate metabolism,0.1028518,1/47,0.05493223,54.65972
+Arginine and proline metabolism,0.1047713,1/50,0.05833855,50.24172
+Cholesterol metabolism,0.1047713,1/50,0.05833855,50.24172
+Cytosolic DNA-sensing pathway,0.1284163,1/63,0.07296379,36.5573

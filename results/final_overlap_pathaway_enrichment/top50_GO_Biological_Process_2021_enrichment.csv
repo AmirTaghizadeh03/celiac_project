@@ -1,0 +1,51 @@
+Term,Adjusted P-value,Overlap,P-value,Combined Score
+cellular response to interferon-gamma (GO:0071346),4.152592e-08,7/121,7.909699e-11,1668.72
+cellular response to type I interferon (GO:0071357),2.07521e-06,5/65,1.255824e-08,1589.165
+type I interferon signaling pathway (GO:0060337),2.07521e-06,5/65,1.255824e-08,1589.165
+interferon-gamma-mediated signaling pathway (GO:0060333),2.07521e-06,5/68,1.581112e-08,1494.103
+cytokine-mediated signaling pathway (GO:0019221),4.10759e-05,8/621,3.91199e-07,233.0201
+"antigen processing and presentation of exogenous peptide antigen via MHC class I, TAP-dependent (GO:0002479)",0.0001436709,4/73,1.641953e-06,768.5616
+antigen processing and presentation of exogenous peptide antigen via MHC class I (GO:0042590),0.0001607432,4/78,2.143242e-06,702.1205
+antigen processing and presentation of peptide antigen via MHC class I (GO:0002474),0.0005308697,3/33,8.089444e-06,1113.647
+protection from natural killer cell mediated cytotoxicity (GO:0042270),0.001203955,2/6,2.063923e-05,4896.915
+antigen processing and presentation of endogenous peptide antigen via MHC class I via ER pathway (GO:0002484),0.001378069,2/7,2.887383e-05,3795.425
+"antigen processing and presentation of endogenous peptide antigen via MHC class I via ER pathway, TAP-independent (GO:0002486)",0.001378069,2/7,2.887383e-05,3795.425
+"antigen processing and presentation of exogenous peptide antigen via MHC class I, TAP-independent (GO:0002480)",0.001553609,2/8,3.847032e-05,3075.871
+"regulation of CD8-positive, alpha-beta T cell proliferation (GO:2000564)",0.001553609,2/8,3.847032e-05,3075.871
+"regulation of CD8-positive, alpha-beta T cell activation (GO:2001185)",0.001853464,2/9,4.94257e-05,2571.343
+regulation of innate immune response (GO:0045088),0.002109989,3/64,6.028541e-05,453.1675
+response to interferon-gamma (GO:0034341),0.003844265,3/80,0.0001173935,334.1104
+antigen processing and presentation of endogenous peptide antigen (GO:0002483),0.003844265,2/14,0.0001244809,1359.875
+negative regulation of natural killer cell mediated cytotoxicity (GO:0045953),0.004780724,2/16,0.0001639105,1129.822
+cellular response to cytokine stimulus (GO:0071345),0.006400586,5/482,0.0002316403,90.04357
+cellular response to interferon-beta (GO:0035458),0.00679261,2/20,0.0002587661,832.5496
+positive regulation of T cell mediated cytotoxicity (GO:0001916),0.01101715,2/26,0.000440686,583.9873
+response to interferon-beta (GO:0035456),0.01221345,2/28,0.0005118017,528.5755
+regulation of T cell mediated cytotoxicity (GO:0001914),0.01253861,2/29,0.0005493106,504.2225
+cellular response to organic cyclic compound (GO:0071407),0.01630829,3/150,0.0007455216,138.7727
+positive regulation of innate immune response (GO:0045089),0.01712352,2/36,0.0008480218,377.1173
+positive regulation of T cell mediated immunity (GO:0002711),0.01712352,2/36,0.0008480218,377.1173
+positive regulation of leukocyte mediated cytotoxicity (GO:0001912),0.02329532,2/43,0.001209287,296.9353
+regulation of immune response (GO:0050776),0.02329532,3/179,0.001242417,107.5291
+positive regulation of smooth muscle cell proliferation (GO:0048661),0.02503744,2/46,0.00138302,271.1199
+regulation of smooth muscle cell proliferation (GO:0048660),0.02655461,2/49,0.001567987,248.9376
+cellular response to tumor necrosis factor (GO:0071356),0.02655461,3/194,0.001565173,95.59187
+pattern recognition receptor signaling pathway (GO:0002221),0.03968113,2/61,0.002418659,184.8857
+diterpenoid metabolic process (GO:0016101),0.04229675,2/64,0.002658653,173.1506
+negative regulation of viral process (GO:0048525),0.04754801,2/70,0.003170908,153.1356
+defense response to Gram-positive bacterium (GO:0050830),0.04754801,2/70,0.003170908,153.1356
+regulation of endopeptidase activity (GO:0052548),0.04754801,2/71,0.003260435,150.1784
+vesicle fusion with endoplasmic reticulum-Golgi intermediate compartment (ERGIC) membrane (GO:1990668),0.05103866,1/6,0.007179245,857.2875
+post-translational protein modification (GO:0043687),0.05103866,3/345,0.007872455,39.73043
+positive regulation of activation of Janus kinase activity (GO:0010536),0.05103866,1/7,0.008370979,692.1464
+aldehyde catabolic process (GO:0046185),0.05103866,1/7,0.008370979,692.1464
+retinoid metabolic process (GO:0001523),0.05103866,2/92,0.005408632,104.8486
+fatty acid omega-oxidation (GO:0010430),0.05103866,1/5,0.005986139,1111.118
+renal tubule development (GO:0061326),0.05103866,1/5,0.005986139,1111.118
+regulation of cellular response to osmotic stress (GO:0106049),0.05103866,1/5,0.005986139,1111.118
+negative regulation of plasminogen activation (GO:0010757),0.05103866,1/5,0.005986139,1111.118
+negative regulation of regulatory T cell differentiation (GO:0045590),0.05103866,1/5,0.005986139,1111.118
+positive regulation of natural killer cell chemotaxis (GO:2000503),0.05103866,1/5,0.005986139,1111.118
+cellular response to heparin (GO:0071504),0.05103866,1/5,0.005986139,1111.118
+positive regulation of natural killer cell proliferation (GO:0032819),0.05103866,1/5,0.005986139,1111.118
+regulation of intestinal lipid absorption (GO:1904729),0.05103866,1/5,0.005986139,1111.118
