@@ -1,5 +1,5 @@
 # celiac_project
-# Author : Amir Taghizadeh
+# Author : Amir Mahdi Taghizadeh
 
 
 # imports
@@ -42,8 +42,8 @@ df = pd.read_csv(df_path, sep='\t', comment='!', index_col=0)
 df = df.drop_duplicates()
 df = df.dropna()
 
+print('Done with loading files. ')
 
-print(df.shape, df.columns)
 
 # step 2: extracting metadata
 
@@ -63,7 +63,8 @@ disease_labels = [
 ]
 df_columns = disease_labels
 
-print(pd.Series(disease_labels).value_counts())
+print('Done with metadata. ')
+
 
 # step 3: anndata object
 
@@ -71,6 +72,8 @@ adata = sc.AnnData(df.T)
 adata.var_names_make_unique()
 adata.obs['disease'] = disease_labels
 sc.pp.calculate_qc_metrics(adata, inplace=True)
+
+print('Done with AnnData. ')
 
 
 # step 4: normalisation
@@ -80,16 +83,22 @@ adata.write(os.path.join(processed_dir, 'first_anndata.h5ad'))
 
 adata.raw = adata.copy()
 
+print('Done with normalization. ')
+
+
 # step 5: DEA
 
 sc.tl.rank_genes_groups(adata, groupby='disease', method='t-test')
 sc.pl.rank_genes_groups(adata, n_genes=25)
 
 deg = sc.get.rank_genes_groups_df(adata, group='Celiac')  
-deg.head()
+deg.to_csv(os.path.join(results_dir, 'deg_all.csv'), index=False)
 
 deg_sig = deg[(abs(deg['logfoldchanges']) > 1) & (deg['pvals_adj'] < 0.05)]
-deg_sig.head()
+deg_sig.to_csv(os.path.join(results_dir, 'sig_deg.csv'), index=False)
+
+print('Done with DEG. ')
+
 
 # step 6: Annotation
 
@@ -113,7 +122,7 @@ symbol_col = [c for c in annot_file.columns if 'gene symbol' in c.lower()][0]
 annot_file = annot_file[[prob_col ,symbol_col]].rename(columns={prob_col: 'ID', symbol_col: 'Gene'})
 annot_file = annot_file[annot_file['Gene'].notna() & (annot_file['Gene'] != '')]
 
-print(annot_file.columns)
+
 
 cd_deg_annot = deg.merge(annot_file[['ID', 'Gene']], left_on='names', right_on='ID', how='left')
 cd_deg_annot = cd_deg_annot.drop(columns=['ID', 'names'])
@@ -121,7 +130,8 @@ col = ['Gene'] + [c for c in cd_deg_annot.columns if c != 'Gene']
 cd_deg_annot = cd_deg_annot[col]
 cd_deg_annot_path = os.path.join(results_dir, 'cd_deg_annotation.csv')
 cd_deg_annot.to_csv(cd_deg_annot_path, index=False)
-print(cd_deg_annot.head(10))
+
+print('Done with Annotation. ')
 
 
 # step 7: enrichment pathaway
@@ -132,11 +142,9 @@ col = ['Gene'] + [c for c in sig_deg_annot.columns if c != 'Gene']
 sig_deg_annot = sig_deg_annot[col]
 sig_deg_annot_path = os.path.join(results_dir, 'sig_deg_annotation.csv')
 sig_deg_annot.to_csv(sig_deg_annot_path, index=False)
-print(sig_deg_annot.head(10))
+
 
 significant_degs = sig_deg_annot['Gene'].dropna().head(10).tolist() 
-
-
 
 path_dir = os.path.join(results_dir, 'pathaway_initial_celiac_sig_genes')
 os.makedirs(path_dir, exist_ok=True)
@@ -154,6 +162,8 @@ for l in enrichr_libs:
         cutoff=0.05
     )
 
+print('Done with enrichment. ')
+
 
 # step 8: annot for ml
 
@@ -162,10 +172,7 @@ expr_df = pd.read_csv(expr_path, sep='\t', comment='!', header=0, dtype=str)
 expr_df = expr_df.rename(columns={expr_df.columns[0]: 'ID'})
 expr_df['ID'] = expr_df['ID'].str.strip()
 
-print(expr_df.head(5))
 annot_file = os.path.join(raw_dir, 'GPL10558.annot')
-
-table_lines = []
 with open((annot_file), 'r', encoding='latin1') as f:
     lines = f.readlines()
 for i, line in enumerate(lines):
@@ -179,12 +186,14 @@ annot['ID'] = annot['ID'].str.strip()
 annot['Gene symbol'] = annot['Gene symbol'].str.strip()
 
 annot = annot[annot['Gene symbol'].notna() & (annot['Gene symbol'] != '')]
-print(annot.shape, annot.columns)
+
 merged_df = pd.merge(expr_df, annot[['ID','Gene symbol']], on='ID', how='inner')
 sample_cols = merged_df.columns.difference(['ID', 'Gene symbol'])
 merged_df[sample_cols] = merged_df[sample_cols].apply(pd.to_numeric, errors='coerce')
 merged_agg = merged_df.groupby('Gene symbol')[sample_cols].mean()
-print(merged_agg.head(5))
+
+print('Done with Annotation for ML. ')
+
 
 # step 9: creating new AnnData for ml
 
@@ -193,10 +202,13 @@ adata_celia.obs['disease'] = disease_labels
 adata_celia.var_names_make_unique()
 
 adata_cd = adata_celia[adata_celia.obs['disease'].isin(['Celiac' , 'Control'])].copy()
-print(adata_cd)
+
 adata_cd.obs['disease'].value_counts()
 
 adata_cd.write(os.path.join(processed_dir, 'final_anndata.h5ad'))
+
+print('Done with new Anndata. ')
+
 
 # step 10: gene based ml
 
@@ -213,8 +225,6 @@ rf_y_pred = rf.predict(X_test)
 rf_class_report = classification_report(y_test, rf_y_pred)
 rf_roc_auc_score = roc_auc_score(y_test, rf_y_pred)
 
-print(f" RF Accuracy: {rf_class_report}")
-print(f' RF ROC-AUC: {rf_roc_auc_score}')
 
 rf_results = os.path.join(results_dir, 'RF_results.csv')
 
@@ -231,8 +241,6 @@ lr_y_pred = lr.predict(X_test)
 lr_class_report = classification_report(y_test, lr_y_pred)
 lr_roc_auc_score = roc_auc_score(y_test, lr_y_pred)
 
-print(f" LR Accuracy: {lr_class_report}")
-print(f' LR ROC-AUC: {lr_roc_auc_score}')
 
 lr_results = os.path.join(results_dir, 'LR_results.csv')
 
@@ -248,8 +256,6 @@ svm_y_pred = svm.predict(X_test)
 svm_class_report = classification_report(y_test, svm_y_pred)
 svm_roc_auc_score = roc_auc_score(y_test, svm_y_pred)
 
-print(f" SVM Accuracy: {svm_class_report}")
-print(f' SVM ROC-AUC: {svm_roc_auc_score}')
 
 svm_results = os.path.join(results_dir, 'SVM_results.csv')
 
@@ -269,11 +275,6 @@ scores_svm = cross_val_score(svm, X, y, cv=5, scoring='roc_auc')
 cv_rf = scores_rf.mean()
 cv_lr = scores_lr.mean()
 cv_svm = scores_svm.mean()
-
-
-print(f" RF CV: {cv_rf}")
-print(f" LR CV: {cv_lr}")
-print(f" SVM CV: {cv_svm}")
 
 
 cross_valid = os.path.join(results_dir, 'cv_models.txt')
@@ -320,15 +321,10 @@ all_scores = np.array([rf_scores, lr_scores, svm_scores])
 model_means = np.nanmean(all_scores, axis=1)
 model_stds = np.nanstd(all_scores, axis=1)
 
-print("RF Bootstrap:", model_means[0], "±", model_stds[0])
-print("LR Bootstrap:", model_means[1], "±", model_stds[1])
-print("SVM Bootstrap:", model_means[2], "±", model_stds[2])
 
 
 final_mean = np.mean(model_means)
 final_std = np.std(model_means)
-
-print(f" Final mean Bootstrap accuracy across all models: {final_mean:.4f} ± {final_std:.4f}")
 
 
 boot_valid = os.path.join(results_dir, 'Bootstrap_models.txt')
@@ -341,6 +337,7 @@ with open(boot_valid, 'w') as f:
     f.write(f'\n{model_means[2]} ± {model_stds[2]}\n')
     f.write('\nFinal mean Bootstrap accuracy across all models: \n')
     f.write(f'\n{final_mean:.4f} ± {final_std:.4f}\n')
+
 
 # step 13: feature importance
 
@@ -377,9 +374,6 @@ overlap = set(rf_top250['Gene']) \
 overlap_df = pd.DataFrame(list(overlap), columns=['Gene'])
 overlap_df.to_csv(os.path.join(results_dir, 'model_genes_overlap_all.csv'), index=False)
 
-print("Overlap count:", len(overlap))
-print("Overlap genes:", overlap)
-
 
 
 deg_overlap_genes = ['SMPDL3A', 'GBP4', 'IRF9', 'STAT1', 'ARHGDIB', 'MS4A10',
@@ -396,24 +390,31 @@ genes_cleaned = genes_cleaned.drop_duplicates(subset='Gene', keep='first')
 final_model_deg_overlap = genes_cleaned.to_csv(
     os.path.join(results_dir, 'model_deg_genes_final_overlap.csv'), index=False)
 
-print(genes_cleaned)
+print('Done with ML. ')
+
 
 # step 14: pahtaway enrichment of overlap genes
 
 final_significant_genes = genes_cleaned['Gene'].tolist()
 
-path_directory = os.path.join(results_dir, 'final_overlap_pathaway_enrichment')
-os.makedirs(path_directory, exist_ok=True)
+pathaway_directory = os.path.join(results_dir, 'final_overlap_pathaway_enrichment')
+os.makedirs(pathaway_directory, exist_ok=True)
 
+enrichr_libs = [
+    "GO_Biological_Process_2021",
+    "KEGG_2021_Human"
+]
 
+for l in enrichr_libs:
+    gp.enrichr(
+        gene_list=final_significant_genes,
+        gene_sets= l,
+        outdir=pathaway_directory,
+        no_plot=True,
+        cutoff=0.05
+        )
 
-gp.enrichr(
-    gene_list=final_significant_genes,
-    gene_sets= "GO_Biological_Process_2021",
-    outdir=path_directory,
-    no_plot=True,
-    cutoff=0.05
-    )
+print('Done with final enrichment. ')
 
 
 # step 15: final ml(XGB)
@@ -443,8 +444,7 @@ with open(cross_validation_final, 'w') as f:
     f.write(f'\n{final_cv.mean()}, ± {final_cv.std()}\n')
     
 
-
-print("Final Model Accuracy:", final_cv.mean(), "±", final_cv.std())
+print('Done wiht final model(XGboost). ')
 
 
 # step 16: visualisation
@@ -506,7 +506,7 @@ for l in enrichr_libs:
     keep_cols = [c for c in ['Term', 'Adjusted P-value', 'Overlap', 'P-value', 'Combined Score'] if c in path_df.columns]
     path_df = path_df[keep_cols].sort_values(by=keep_cols[1]).head(50)
 
-    out_file = os.path.join(path_dir, f"top20_{l}_enrichment.csv")
+    out_file = os.path.join(path_dir, f"top50_{l}_enrichment.csv")
     path_df.to_csv(out_file, index=False)
     
 
@@ -515,19 +515,22 @@ libraries = [
     "KEGG_2021_Human"
 ]
 for li in libraries:
-    top_enr_path = os.path.join(path_dir, f"top20_{li}_enrichment.csv")
+    top_enr_path = os.path.join(path_dir, f"top50_{li}_enrichment.csv")
     enrich = pd.read_csv(top_enr_path)
     score_col = 'Adjusted P-value' if 'Adjusted P-value' in enrich.columns else 'P-value'
     enrich = enrich.sort_values(by=score_col).head(15)
     enrich['Term'] = enrich['Term'].astype(str)
-
+    enrich['Term'] = enrich['Term'].astype(str).str.replace(r'\s*\(.*?\)', '', regex=True)
+    
     plt.figure(figsize=(8, 6))
     plt.barh(enrich['Term'], -enrich[score_col].apply(lambda x: np.log10(x)))
-    plt.xlabel('-log10(p-value)')
-    plt.ylabel('Enriched Term')
+    plt.xlim(0, enrich[score_col].apply(lambda x: -np.log10(x)).max() * 1.15)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.xlabel('-log10(Adjusted P-value)', fontsize=20)
+    plt.ylabel('Enriched Term', fontsize=20)
     plt.title(f'Top Enriched Terms: {li}')
     plt.gca().invert_yaxis()
-    plt.tight_layout()
 
     # save figure
     plot_file = os.path.join(figures_dir, f"{li}_barplot.png")
@@ -610,6 +613,9 @@ plt.tight_layout()
 biomarker_out_logfc = os.path.join(figures_dir, 'final_biomarker_logfc.png')
 plt.savefig(biomarker_out_logfc, dpi=300, bbox_inches='tight')
 
+print('Done with models and DEG overlap visualization. ')
+
+
 ## ROC & AUC curve
 
 y_pred_proba = cross_val_predict(
@@ -624,7 +630,6 @@ fpr, tpr, _ = roc_curve(y_final, y_pred_proba)
 
 roc_auc_value = auc(fpr, tpr)
 
-print("ROC-AUC:", roc_auc_value)
 
 roc_auc_final = os.path.join(results_dir, 'roc_auc_final_model.txt')
 with open(roc_auc_final, 'w') as f:
@@ -641,3 +646,47 @@ plt.legend(loc='lower right')
 roc_auc_plot_path = os.path.join(figures_dir, 'final_ROC_AUC_curve.png')
 plt.savefig(roc_auc_plot_path, dpi=300, bbox_inches='tight')
 
+print('Done with roc-auc curve. ')
+
+## CD final enrichment barplot
+
+for l in enrichr_libs:
+    file_name = f'{l}.human.enrichr.reports.txt'
+    file_path = os.path.join(pathaway_directory, file_name)
+
+    path_df = pd.read_csv(file_path, sep='\t', encoding='utf-8')
+    keep_cols = [c for c in ['Term', 'Adjusted P-value', 'Overlap', 'P-value', 'Combined Score'] if c in path_df.columns]
+    path_df = path_df[keep_cols].sort_values(by=keep_cols[1]).head(50)
+
+    out_file = os.path.join(pathaway_directory, f"top50_{l}_enrichment.csv")
+    path_df.to_csv(out_file, index=False)
+    
+
+libraries = [
+    "GO_Biological_Process_2021",
+    "KEGG_2021_Human"
+]
+for li in libraries:
+    top_enr_path = os.path.join(pathaway_directory, f"top50_{li}_enrichment.csv")
+    enrich = pd.read_csv(top_enr_path)
+    score_col = 'Adjusted P-value' if 'Adjusted P-value' in enrich.columns else 'P-value'
+    enrich = enrich.sort_values(by=score_col).head(15)
+    enrich['Term'] = enrich['Term'].astype(str)
+    enrich['Term'] = enrich['Term'].astype(str).str.replace(r'\s*\(.*?\)', '', regex=True)
+    
+    plt.figure(figsize=(8, 6))
+    plt.barh(enrich['Term'], -enrich[score_col].apply(lambda x: np.log10(x)))
+    plt.xlim(0, enrich[score_col].apply(lambda x: -np.log10(x)).max() * 1.15)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.xlabel('-log10(Adjusted P-value)', fontsize=20)
+    plt.ylabel('Enriched Term', fontsize=20)
+    plt.title(f'Top Enriched Terms: {li}')
+    plt.gca().invert_yaxis()
+
+    # save figure
+    plot_file = os.path.join(figures_dir, f"{li}_final_barplot.png")
+    
+    plt.savefig(plot_file, dpi=300, bbox_inches='tight')
+
+print("Done with final enrichment barplot. ")
